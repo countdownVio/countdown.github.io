@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Favorite Office Character</title>
+    <style>
+        #officeImage {
+            display: none; /* Initially hide the image */
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Who's your favorite character from The Office?</h1>
+
+    <form id="officeForm">
+        <label>
+            <input type="text" id="characterInput" placeholder="Enter character name">
+        </label>
+        <button type="button" onclick="checkFavoriteCharacter()">Submit</button>
+    </form>
+
+    <div id="officeImage">
+        <!-- Image to display when the entered character is not Andy -->
+        <img src="andy.jpg" alt="Alternative Image">
+    </div>
+
+    <script>
+        function checkFavoriteCharacter() {
+            // Get the entered character name
+            var enteredCharacter = document.getElementById('characterInput').value;
+
+            if (enteredCharacter.toLowerCase() === 'andy') {
+                // If Andy is entered, hide the image
+                document.getElementById('officeImage').style.display = 'none';
+            } else {
+                // If any other character is entered, show the image
+                document.getElementById('officeImage').style.display = 'block';
+            }
+        }
+    </script>
+
+</body>
+</html>
