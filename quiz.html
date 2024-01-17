@@ -5,8 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Favorite Office Character</title>
     <style>
+        #officeImageContainer {
+            display: none; /* Initially hide the image container */
+            width: 350px;
+            height: 200px;
+            border: 1px solid #ccc;
+            margin-top: 10px;
+        }
+
         #officeImage {
-            display: none; /* Initially hide the image */
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        #characterText {
+            text-align: center;
+            margin-top: 5px;
         }
     </style>
 </head>
@@ -21,22 +36,29 @@
         <button type="button" onclick="checkFavoriteCharacter()">Submit</button>
     </form>
 
-    <div id="officeImage">
+    <div id="officeImageContainer">
+        <!-- Text to display above the picture -->
+        <div id="characterText"></div>
         <!-- Image to display when the entered character is not Andy -->
-        <img src="andy.jpg" alt="Alternative Image">
+        <img id="officeImage" src="andy.jpg" alt="Alternative Image">
     </div>
 
     <script>
         function checkFavoriteCharacter() {
             // Get the entered character name
             var enteredCharacter = document.getElementById('characterInput').value;
+            var officeImageContainer = document.getElementById('officeImageContainer');
+            var characterText = document.getElementById('characterText');
 
             if (enteredCharacter.toLowerCase() === 'andy') {
-                // If Andy is entered, hide the image
-                document.getElementById('officeImage').style.display = 'none';
+                // If Andy is entered, hide the image container
+                officeImageContainer.style.display = 'none';
             } else {
-                // If any other character is entered, show the image
-                document.getElementById('officeImage').style.display = 'block';
+                // If any other character is entered, show the image container
+                officeImageContainer.style.display = 'block';
+
+                // Display the entered character text above the picture
+                characterText.textContent = "It's not '" + enteredCharacter + "', it's Andy.";
             }
         }
     </script>
